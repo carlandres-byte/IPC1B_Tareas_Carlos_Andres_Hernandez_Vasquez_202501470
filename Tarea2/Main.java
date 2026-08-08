@@ -21,6 +21,17 @@ public class Main {
         }
 
         procesarArregloUnidimensional(arregloUnidimensional);
+
+        System.out.println("\n--- 2. MATRIZ BIDIMENSIONAL (3x3) ---");
+        int[][] matriz = new int[3][3];
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                matriz[i][j] = leerEnteroValidado(scanner, "Posicion [" + i + "][" + j + "] (1-100): ", 1, 100);
+            }
+        }
+
+        procesarMatrizBidimensional(matriz);
     }
 
     // Leer y validar entero en rango
@@ -45,7 +56,7 @@ public class Main {
         return numero;
     }
 
-    // Procesar arreglo 1D 
+    //  Procesar arreglo 1D 
     public static void procesarArregloUnidimensional(int[] arreglo) {
         if (arreglo == null || arreglo.length == 0) return;
 
@@ -70,5 +81,23 @@ public class Main {
         System.out.println("Maximo: " + max);
         System.out.println("Minimo: " + min);
         System.out.printf("Promedio: %.2f\n", promedio);
+    }
+
+    // Procesar y desplegar matriz bidimensional
+    public static void procesarMatrizBidimensional(int[][] matriz) {
+        System.out.println("\n--- CONTENIDO DE LA MATRIZ (3x3) ---");
+        int sumaTotal = 0;
+
+        for (int i = 0; i < matriz.length; i++) {
+            int sumaFila = 0;
+            System.out.print("Fila " + i + ": | ");
+            for (int j = 0; j < matriz[i].length; j++) {
+                System.out.printf("%3d | ", matriz[i][j]);
+                sumaFila += matriz[i][j];
+                sumaTotal += matriz[i][j];
+            }
+            System.out.println(" -> Suma Fila " + i + " = " + sumaFila);
+        }
+        System.out.println("Suma total de la matriz: " + sumaTotal);
     }
 }
