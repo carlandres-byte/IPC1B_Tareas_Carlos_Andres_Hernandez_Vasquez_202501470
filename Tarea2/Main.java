@@ -6,6 +6,7 @@ public class Main {
 
 
     public static void main(String[] args) {
+        //  Tipos de datos primitivos
         int tamanoArreglo = 5;
         double limiteMaximo = 100.0;
         char simboloSeparador = '=';
@@ -13,10 +14,13 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("--- 1. ARREGLO UNIDIMENSIONAL ---");
+        imprimirEncabezado(simboloSeparador, "SISTEMA DE PROCESAMIENTO DE DATOS - TAREA 2");
+
+        System.out.println("\n--- 1. ARREGLO UNIDIMENSIONAL ---");
         int[] arregloUnidimensional = new int[tamanoArreglo];
 
         for (int i = 0; i < arregloUnidimensional.length; i++) {
+            // Lee y valida la entrada en el rango de 1 a 100
             arregloUnidimensional[i] = leerEnteroValidado(scanner, "Ingrese entero #" + (i + 1) + " (1-100): ", 1, 100);
         }
 
@@ -32,9 +36,12 @@ public class Main {
         }
 
         procesarMatrizBidimensional(matriz);
+
+        imprimirEncabezado(simboloSeparador, "PROCESO FINALIZADO CON EXITO: " + ejecucionExitosa);
+        scanner.close();
     }
 
-    // Leer y validar entero en rango
+    // Leer y validar enteros en rango determinado
     public static int leerEnteroValidado(Scanner scanner, String mensaje, int min, int max) {
         int numero = 0;
         boolean valido = false;
@@ -99,5 +106,14 @@ public class Main {
             System.out.println(" -> Suma Fila " + i + " = " + sumaFila);
         }
         System.out.println("Suma total de la matriz: " + sumaTotal);
+    }
+
+    // Imprimir encabezados con bordes
+    public static void imprimirEncabezado(char caracter, String titulo) {
+        System.out.println();
+        for (int i = 0; i < 45; i++) System.out.print(caracter);
+        System.out.println("\n" + titulo);
+        for (int i = 0; i < 45; i++) System.out.print(caracter);
+        System.out.println();
     }
 }
